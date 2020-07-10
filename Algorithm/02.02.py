@@ -15,6 +15,7 @@ class Solution:
         a = head
         b = head
         while k > 0:
+            k -= 1
             a = a.next
         while a != None:
             a = a.next
