@@ -14,9 +14,12 @@ class Solution:
     def searchBST(self, root: TreeNode, val: int) -> TreeNode:
         h = root
         while h:
-            if h.val
-
-
+            if h.val == val:
+                return h
+            if h.val < val:
+                h = h.right
+            elif h.val > val:
+                h = h.left
         return None
 
 

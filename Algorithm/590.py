@@ -10,5 +10,13 @@ class Node:
 
 class Solution:
     def postorder(self, root: 'Node') -> List[int]:
+        st = [root]
+        res = []
+        # st is a stack, st is not empty
+        while st and st[0]:
+            t = st.pop()
+            res.append(t.val)
+            st.extend(t.children)
+        return res[::-1]
         
 
