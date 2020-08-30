@@ -13,7 +13,16 @@ class TreeNode:
         self.right = None
 
 class Solution:
-    def sumRootToLeaf(self, root: TreeNode) -> int:
+    def sumRootToLeaf(self, root: TreeNode, v = 0) -> int:
+        if root == None:
+            return 0
+        v = 2 * v + root.val
+        if root.left == None and root.right == None:
+            return v
+        return self.sumRootToLeaf(root.left, v) + self.sumRootToLeaf(root.right, v)
+
+
         
+
 
 
