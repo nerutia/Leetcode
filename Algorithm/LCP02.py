@@ -9,17 +9,16 @@
 from typing import List
 
 class Solution:
-    def fraction(self, cont: List[int], up = 1) -> List[int]:
-        # 递归， 假定原型为 T2 = a + up / T1
+    def fraction(self, cont: List[int]) -> List[int]:
         if len(cont) == 1:
-            return [cont[0],1]
-        if len(cont) == 2:
-            return [cont[0]*cont[1]+up,cont[1]]
-        a,b = cont[-2],cont[-1]
-        cont.pop()
-        up,cont[-2] = a*b+1,b*up
-        return self.fraction(cont,up)
+            return [cont[0], 1]
+        down, up = 1, cont.pop()
+        while len(cont) > 0:
+            t = cont.pop()
+            down, up = up, down + t * up
+        return [up, down]
 
 
 c = Solution()
 print(c.fraction(cont = [3, 2, 0, 2]))
+
