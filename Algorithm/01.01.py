@@ -8,4 +8,6 @@ class Solution:
 
 
 c = Solution()
-print(c.isUnique("ac"))
+print(c.isUnique(
+    "ac"
+))

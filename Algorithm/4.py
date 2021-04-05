@@ -5,12 +5,37 @@
 # 你可以假设 nums1 和 nums2 不会同时为空。
 
 # TODO
-class Solution:
-    def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
 
-        return 1
+from typing import List
+class Solution:
+    def findK(self, a1, a2, k):
+        if a1 == []:
+            return a2[k]
+        if a2 == []:
+            return a1[k]
+        if k == 0:
+            return min(a1[0], a2[0])
+        p = k // 2
+        l1 = len(a1)
+        l2 = len(a2)
+        if p > l1 or a1[p] < a2[p]:
+            return self.findK(a1[p:], a2, k-p)
+        else:
+            return self.findK(a1, a2[p:], k-p)
+
+    def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
+        l1 = len(nums1)
+        l2 = len(nums2)
+        p1 = (l1 + l2) // 2
+        p2 = (l1 + l2 - 1) // 2
+        return (self.findK(nums1, nums2, p1) + self.findK(nums1, nums2, p2)) / 2
+        
 
 c = Solution()
-print(c.findMedianSortedArrays(nums1=[1,3],nums2=[2]))
+print(c.findMedianSortedArrays(nums1=[1,3],nums2=[9]))
+
+
+
+
 
 
